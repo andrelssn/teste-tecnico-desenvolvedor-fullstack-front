@@ -1,6 +1,8 @@
 import { AppBar, Tabs, Tab, Typography, Box } from "@mui/material";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { Book, Person, Home as HomeIcon } from "@mui/icons-material";
+import { Person, Home as HomeIcon } from "@mui/icons-material";
+
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 
 export default function Header() {
     const navigate = useNavigate();
@@ -9,12 +11,12 @@ export default function Header() {
     // define qual tab está ativa com base na URL
     const currentPath = location.pathname;
     const tabValue =
-        currentPath === "/" ? 0 : currentPath.startsWith("/books") ? 1 : 2;
+        currentPath === "/" ? 0 : currentPath.startsWith("/products") ? 1 : 2;
 
     const handleChange = (event, newValue) => {
         if (newValue === 0) navigate("/");
-        if (newValue === 1) navigate("/books");
-        if (newValue === 2) navigate("/authors");
+        if (newValue === 1) navigate("/products");
+        if (newValue === 2) navigate("/clients");
     };
 
     return (
@@ -22,14 +24,14 @@ export default function Header() {
             <AppBar
                 position="static"
                 sx={{
-                    bgcolor: "#2F3330",
+                    bgcolor: "var(--theme)",
                     p: 2,
                     flexDirection: "column",
                     alignItems: "center",
                 }}
             >
                 <Typography variant="h5" fontWeight="bolder" color="#ffffff" gutterBottom>
-                    📚 Galeria de Livros
+                    Sistema de Produtos
                 </Typography>
 
                 {/* Tabs de navegação */}
@@ -37,11 +39,11 @@ export default function Header() {
                     value={tabValue}
                     onChange={handleChange}
                     textColor="inherit"
-                    TabIndicatorProps={{ style: { backgroundColor: "#79643F" } }}
+                    TabIndicatorProps={{ style: { backgroundColor: "#f7f7f7ff" } }}
                 >
                     <Tab icon={<HomeIcon />} label="Início" />
-                    <Tab icon={<Book />} label="Livros" />
-                    <Tab icon={<Person />} label="Autores" />
+                    <Tab icon={<LocalGroceryStoreIcon />} label="Produtos" />
+                    <Tab icon={<Person />} label="Clientes" />
                 </Tabs>
             </AppBar>
 
@@ -54,7 +56,7 @@ export default function Header() {
             <Box
                 component="footer"
                 sx={{
-                    bgcolor: "#2F3330",
+                    bgcolor: "var(--theme)",
                     color: "#fff",
                     textAlign: "center",
                     py: 2,
@@ -62,7 +64,7 @@ export default function Header() {
                 }}
             >
                 <Typography variant="body2">
-                    © 2025 Book Gallery - Todos os direitos reservados
+                    © 2025 Sistema de Produtos - Todos os direitos reservados
                 </Typography>
             </Box>
         </Box>

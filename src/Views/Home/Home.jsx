@@ -21,12 +21,13 @@ export default function Home() {
                     textAlign: "center",
                 }}
             >
-                <Typography variant="h3" gutterBottom sx={{ color: "var(--theme2)" }}>
-                    Bem-vindo à Galeria de Livros
+                <Typography variant="h3" gutterBottom sx={{ color: "var(--text)" }}>
+                    Bem-vindo ao Sistema de Produtos
                 </Typography>
-                <Typography variant="body1" sx={{ mb: 4, color: "var(--theme3)" }}>
-                    Explore o mundo da literatura! Aqui você pode visualizar livros,
-                    conhecer autores e até cadastrar novas obras.
+
+                <Typography variant="body1" sx={{ mb: 4, color: "var(--text-secondary)" }}>
+                    Aqui você pode gerenciar seus produtos e clientes com facilidade.
+                    Adicione novos produtos, visualize o catálogo, e acompanhe os dados dos seus clientes.
                 </Typography>
             </Paper>
         </Container>
