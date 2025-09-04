@@ -1,0 +1,47 @@
+
+* {
+	font-family: sans-serif !important;
+}
+
+
+:root {
+    --text:             #fff;
+    --text-secondary:   #cecece;
+    --theme: #1B1B1F;     /* preto azulado profundo */
+    --theme2: #2C2C34;    /* cinza escuro azulado */
+    --theme3: #3A3A4A;    /* cinza médio para contraste suave */
+    --theme4: #56566C;    /* cinza azulado mais claro para highlights */
+    --panel: #2F2F36;     /* cor de card/painel escuro */
+    --background: #1A1A1D;/* background geral */
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    /* Gradiente escuro sutil */
+    background: linear-gradient(135deg,
+            var(--theme) 0%,
+            var(--theme2) 25%,
+            var(--theme3) 50%,
+            var(--theme4) 75%,
+            var(--background) 100%);
+
+    background-attachment: fixed;
+    background-size: 200% 200%;
+
+    animation: gradientFlow 20s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
