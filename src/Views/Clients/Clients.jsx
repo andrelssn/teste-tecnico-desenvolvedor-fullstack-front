@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 
 // Services
-import { deleteData, getData, postData, putData } from "../../Services/services";
+import { getData, postData, putData } from "../../Services/services";
 
 export default function Clients() {
     const [clients, setClients] = useState([]);
@@ -76,10 +76,6 @@ export default function Clients() {
             await postData({ uri: '/clientes', formData }).then(() => fetchClients());
         }
         handleClose();
-    };
-
-    const handleDelete = async (id) => {
-        await deleteData(`/clientes/${id}`).then(() => fetchClients());
     };
 
     if (loading) return (
@@ -158,36 +154,6 @@ export default function Clients() {
                                             Email: {client.email}
                                         </Typography>
                                     </CardContent>
-
-                                    <CardActions sx={{ justifyContent: "flex-end", p: 2 }}>
-                                        <Button
-                                            size="small"
-                                            sx={{
-                                                textTransform: "none",
-                                                color: "var(--text-secondary)",
-                                                fontWeight: "bold",
-                                                "&:hover": { color: "var(--text)" },
-                                            }}
-                                            onClick={() => handleOpen(client)}
-                                        >
-                                            Editar
-                                        </Button>
-                                        <Button
-                                            size="small"
-                                            sx={{
-                                                textTransform: "none",
-                                                color: "#fff",
-                                                fontWeight: "bold",
-                                                bgcolor: "crimson",
-                                                borderRadius: "10px",
-                                                px: 2,
-                                                "&:hover": { bgcolor: "#a3002c" },
-                                            }}
-                                            onClick={() => handleDelete(client.id)}
-                                        >
-                                            Deletar
-                                        </Button>
-                                    </CardActions>
                                 </Card>
                             </Grid>
                         ))}

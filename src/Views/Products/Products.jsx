@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 
 // Services
-import { deleteData, getData, postData, putData } from "../../Services/services";
+import { getData, postData, putData } from "../../Services/services";
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -78,10 +78,6 @@ export default function Products() {
             await postData({ uri: '/produtos', formData }).then(() => fetchProducts());
         }
         handleClose();
-    };
-
-    const handleDelete = async (id) => {
-        await deleteData(`/produtos/${id}`).then(() => fetchProducts());
     };
 
     if (loading) return (
@@ -160,36 +156,6 @@ export default function Products() {
                                             Preço: R$ {product.preco} | Estoque: {product.estoque}
                                         </Typography>
                                     </CardContent>
-
-                                    <CardActions sx={{ justifyContent: "flex-end", p: 2 }}>
-                                        <Button
-                                            size="small"
-                                            sx={{
-                                                textTransform: "none",
-                                                color: "var(--text-secondary)",
-                                                fontWeight: "bold",
-                                                "&:hover": { color: "var(--text)" },
-                                            }}
-                                            onClick={() => handleOpen(product)}
-                                        >
-                                            Editar
-                                        </Button>
-                                        <Button
-                                            size="small"
-                                            sx={{
-                                                textTransform: "none",
-                                                color: "#fff",
-                                                fontWeight: "bold",
-                                                bgcolor: "crimson",
-                                                borderRadius: "10px",
-                                                px: 2,
-                                                "&:hover": { bgcolor: "#a3002c" },
-                                            }}
-                                            onClick={() => handleDelete(product.id)}
-                                        >
-                                            Deletar
-                                        </Button>
-                                    </CardActions>
                                 </Card>
                             </Grid>
                         ))}
